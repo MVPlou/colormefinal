@@ -2,13 +2,14 @@
 import React from 'react';
 import ClientSearchWrapper from '@/components/ClientSearchWrapper';
 import MobileFloatingNavbar from '@/components/MobileFloatingNavbar';
-import { Inter } from 'next/font/google';
 import Footer from '@/components/Footer';
 import Sidebar from '@/components/Sidebar';
-import './globals.css';
+import './globals.css';import { Inter, Fredoka } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
+const fredoka = Fredoka({ subsets: ['latin'], variable: '--font-fredoka' })
 
 
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Coloring Page Templates',
@@ -30,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} ${fredoka.variable}`}>
         <div className="min-h-screen bg-white">
           <div className="py-8 px-4 bg-gray-100">
             <div className="max-w-6xl mx-auto">

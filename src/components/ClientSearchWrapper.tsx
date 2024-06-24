@@ -2,6 +2,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Search, X } from 'lucide-react';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -29,6 +30,7 @@ const ClientSearchWrapper: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchBarRef = useRef<HTMLDivElement>(null);
   const originalTopRef = useRef<number | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -74,8 +76,9 @@ const ClientSearchWrapper: React.FC = () => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Searching for:', query);
-    // Implement your search logic here
+    if (query.trim()) {
+      router.push(`/search?q=${encodeURIComponent(query.trim())}`);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -92,7 +95,7 @@ const ClientSearchWrapper: React.FC = () => {
   const handleCategoryClick = (category: string) => {
     setQuery(category);
     setIsDropdownOpen(true);
-    // You might want to trigger a search here as well
+    //  might want to trigger a search here as well
   };
 
   const renderHashtagButtons = () => (
@@ -183,7 +186,7 @@ const ClientSearchWrapper: React.FC = () => {
       {/* Spacer div to prevent content jump when search bar becomes sticky */}
       {isSticky && <div style={{ height: '60px' }}></div>}
       
-      <div className="max-w-3xl mx-auto px-4">
+      <div className="max-w-3xl mx-auto px-4 justify-content-center">
         {/* Hashtag buttons */}
         {renderHashtagButtons()}
       </div>
