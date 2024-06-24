@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 interface ColoringPage {
   id: string;
   title: string;
-  imageUrl: string;
+  imageSrc: string;
 }
 
 interface SimilarPagesProps {
@@ -25,7 +25,7 @@ const SimilarPages: React.FC<SimilarPagesProps> = ({ pages }) => {
               <CardContent className="p-2">
                 <div className="relative aspect-square">
                   <Image
-                    src={page.imageUrl}
+                    src={page.imageSrc}
                     alt={page.title}
                     layout="fill"
                     objectFit="cover"

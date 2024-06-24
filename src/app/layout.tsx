@@ -33,7 +33,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} ${fredoka.variable}`}>
         <div className="min-h-screen bg-white">
-          <div className="py-8 px-4 bg-gray-100">
+          <div className="py-4 px-4 bg-gray-100 shadow-md">
             <div className="max-w-6xl mx-auto">
               <ClientSearchWrapper  />
             </div>

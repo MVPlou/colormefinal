@@ -9,7 +9,7 @@ import SimilarPages from '@/components/SimilarPages';
 const coloringPage = {
   id: '96172-flowersgarden',
   title: 'Flowers Garden',
-  imageUrl: '/api/placeholder/400/400',
+  imageSrc: '/Fantasy-Worlds.png',
   category: 'Nature',
   downloads: 1975,
   addedDate: 'June 19, 2024',
@@ -18,11 +18,11 @@ const coloringPage = {
 
 // Mock similar pages - replace with actual data fetching logic
 const similarPages = [
-  { id: '1', title: 'Butterfly Garden', imageUrl: '/api/placeholder/200/200' },
-  { id: '2', title: 'Spring Meadow', imageUrl: '/api/placeholder/200/200' },
-  { id: '3', title: 'Tropical Paradise', imageUrl: '/api/placeholder/200/200' },
-  { id: '4', title: 'Forest Animals', imageUrl: '/api/placeholder/200/200' },
-  { id: '5', title: 'Seaside Adventure', imageUrl: '/api/placeholder/200/200' },
+  { id: '1', title: 'Butterfly Garden', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '2', title: 'Spring Meadow', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '3', title: 'Tropical Paradise', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '4', title: 'Forest Animals', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '5', title: 'Seaside Adventure', imageSrc: '/api/placeholder/200/200' },
 ];
 
 export default function ColoringPageDetails() {
@@ -35,7 +35,7 @@ export default function ColoringPageDetails() {
             <CardContent className="p-4">
               <div className="aspect-square relative mb-4">
                 <Image 
-                  src={coloringPage.imageUrl} 
+                  src={coloringPage.imageSrc} 
                   alt={coloringPage.title} 
                   layout="fill" 
                   objectFit="contain"

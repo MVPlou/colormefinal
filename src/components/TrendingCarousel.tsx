@@ -8,27 +8,23 @@ import Link from 'next/link';
 interface TrendingPage {
   id: string;
   title: string;
-  imageUrl: string;
+  imageSrc: string;
 }
 
 const trendingPages: TrendingPage[] = [
-  { id: '1', title: 'Unicorn Dreams', imageUrl: '/api/placeholder/200/200' },
-  { id: '2', title: 'Jungle Adventure', imageUrl: '/api/placeholder/200/200' },
-  { id: '3', title: 'Ocean Wonders', imageUrl: '/api/placeholder/200/200' },
-  { id: '4', title: 'Space Explorers', imageUrl: '/api/placeholder/200/200' },
-  { id: '5', title: 'Enchanted Forest', imageUrl: '/api/placeholder/200/200' },
-  { id: '6', title: 'Dinosaur World', imageUrl: '/api/placeholder/200/200' },
-  { id: '7', title: 'Fairy Tale Castle', imageUrl: '/api/placeholder/200/200' },
-  { id: '8', title: 'Underwater Kingdom', imageUrl: '/api/placeholder/200/200' },
-  // Duplicate the array to create a seamless loop
-  { id: '9', title: 'Unicorn Dreams', imageUrl: '/api/placeholder/200/200' },
-  { id: '10', title: 'Jungle Adventure', imageUrl: '/api/placeholder/200/200' },
-  { id: '11', title: 'Ocean Wonders', imageUrl: '/api/placeholder/200/200' },
-  { id: '12', title: 'Space Explorers', imageUrl: '/api/placeholder/200/200' },
-  { id: '13', title: 'Enchanted Forest', imageUrl: '/api/placeholder/200/200' },
-  { id: '14', title: 'Dinosaur World', imageUrl: '/api/placeholder/200/200' },
-  { id: '15', title: 'Fairy Tale Castle', imageUrl: '/api/placeholder/200/200' },
-  { id: '16', title: 'Underwater Kingdom', imageUrl: '/api/placeholder/200/200' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+  { id: '1', title: 'Unicorn Dreams', imageSrc: '/Fantasy-Worlds.png' },
+
 ];
 
 const TrendingCarousel: React.FC = () => {
@@ -93,7 +89,7 @@ const TrendingCarousel: React.FC = () => {
             <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg h-64">
               <div className="relative h-48">
                 <Image
-                  src={page.imageUrl}
+                  src={page.imageSrc}
                   alt={page.title}
                   layout="fill"
                   objectFit="cover"
