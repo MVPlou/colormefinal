@@ -34,7 +34,7 @@ export default function RootLayout({
         <div className="min-h-screen bg-white">
           <div className="py-8 px-4 bg-gray-100">
             <div className="max-w-6xl mx-auto">
-              <ClientSearchWrapper onSearch={handleSearch} />
+              <ClientSearchWrapper  />
             </div>
           </div>
           <main className="max-w-6xl mx-auto px-4 py-8 mb-16 md:mb-8 ">
