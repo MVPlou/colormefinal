@@ -71,10 +71,10 @@ const TrendingCarousel: React.FC = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-5 py-5 my-8">
-      <h2 className="text-2xl font-bold mb-4 text-center">Trending Coloring Pages</h2>
+      <h2 className="text-3xl font-semibold  mb-4 text-center ">Trending Coloring Pages</h2>
       <div 
         ref={scrollRef}
-        className="flex overflow-x-hidden"
+        className="flex overflow-x-hidden scrollbar-hide"
         style={{ 
           width: '100%',
           whiteSpace: 'nowrap'

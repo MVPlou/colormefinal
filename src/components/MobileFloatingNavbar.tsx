@@ -9,7 +9,7 @@ import { Home, Search, BookOpen, User, Settings } from 'lucide-react';
 const navItems = [
   { icon: Home, label: 'Home', href: '/' },
   { icon: Search, label: 'Search', href: '/search' },
-  { icon: BookOpen, label: 'Pages', href: '/coloringpages' },
+  { icon: BookOpen, label: 'Pages', href: '/category/Dogs' },
   { icon: User, label: 'Profile', href: '/profile' },
   { icon: Settings, label: 'Settings', href: '/settings' },
 ];

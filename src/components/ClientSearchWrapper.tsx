@@ -1,6 +1,5 @@
 // src/components/ClientSearchWrapper.tsx
 'use client'
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, X } from 'lucide-react';
@@ -117,16 +116,18 @@ const ClientSearchWrapper: React.FC = () => {
   };
 
   const renderHashtagButtons = () => (
-    <div className="flex flex-wrap gap-2 mt-2">
-      {categories.map((category, index) => (
-        <button
-          key={index}
-          onClick={() => handleCategoryClick(category)}
-          className="px-2 py-1 text-xs bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors duration-200"
-        >
-          #{category}
-        </button>
-      ))}
+    <div className="md:flex md:justify-content-center md:flex-wrap md:gap-2 mt-2 overflow-x-auto md:overflow-x-visible whitespace-nowrap md:whitespace-normal pb-2 px-4 md:px-0 scrollbar-hide">
+      <div className="inline-flex md:flex md:flex-wrap gap-2">
+        {categories.map((category, index) => (
+          <button
+            key={index}
+            onClick={() => handleCategoryClick(category)}
+            className="px-2 py-1 text-xs bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-colors duration-200 flex-shrink-0"
+          >
+            #{category}
+          </button>
+        ))}
+      </div>
     </div>
   );
 
@@ -139,13 +140,7 @@ const ClientSearchWrapper: React.FC = () => {
         }`}
       >
         <Link href="/" className="absolute left-10 top-9 -translate-y-1/2 hidden lg:block pt-1">
-          <Image
-            src="/colorme.gg.png"
-            alt="ColorMe Logo"
-            width={200}
-            height={200}
-            className="w-auto h-[70px]"
-          />
+        <p className='font-fredoka font-bold  text-3xl'>COLORME.</p><p className='text-3xl font-fredoka font-bold  text-purple-600'>GG</p>
         </Link>
         <div className="max-w-6xl mx-auto px-4 relative flex items-center">
           <div className="flex-grow">
@@ -215,9 +210,9 @@ const ClientSearchWrapper: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="max-w-3xl mx-auto px-4">
-          {renderHashtagButtons()}
-        </div>
+        {/* <div className="max-w-6xl mx-auto px-4 mt-2">
+  {renderHashtagButtons()}
+</div> */}
       </div>
       
       {isSticky && <div style={{ height: '60px' }}></div>}
