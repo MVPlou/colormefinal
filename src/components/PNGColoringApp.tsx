@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Slider } from "@/components/ui/slider"
@@ -25,20 +25,20 @@ const ColoringApp: React.FC = () => {
     '#C0C0C0', '#808080', '#000000'
   ];
 
+  const handleResize = useCallback(() => {
+    loadImage();
+  }, []);
+
   useEffect(() => {
     loadImage();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [handleResize]);
 
   useEffect(() => {
     const hexColor = `#${customColor.r.toString(16).padStart(2, '0')}${customColor.g.toString(16).padStart(2, '0')}${customColor.b.toString(16).padStart(2, '0')}`;
     setCurrentColor(hexColor);
   }, [customColor]);
-
-  const handleResize = () => {
-    loadImage();
-  };
 
   const loadImage = () => {
     const canvas = canvasRef.current;

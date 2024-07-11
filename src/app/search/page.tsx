@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -26,7 +26,7 @@ const SkeletonCard = () => (
 
 const ITEMS_PER_PAGE = 20;
 
-export default function SearchResults() {
+const SearchResultsContent = () => {
   const searchParams = useSearchParams();
   const query = searchParams.get('q') || '';
   const [results, setResults] = useState<ColoringPage[]>([]);
@@ -35,7 +35,7 @@ export default function SearchResults() {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const fetchResults = async (reset = false) => {
+  const fetchResults = useCallback(async (reset = false) => {
     if (reset) {
       setPage(1);
       setResults([]);
@@ -61,11 +61,11 @@ export default function SearchResults() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [query, page]);
 
   useEffect(() => {
     fetchResults(true);
-  }, [query]);
+  }, [fetchResults]);
 
   const loadMore = () => {
     setPage(prevPage => prevPage + 1);
@@ -98,7 +98,6 @@ export default function SearchResults() {
                     />
                   </div>
                   <h2 className="text-sm font-semibold truncate mt-2 font-fredoka">{page.title}</h2>
-                 
                 </CardContent>
               </Card>
             </Link>
@@ -124,8 +123,16 @@ export default function SearchResults() {
 
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6">
-      <h1 className="text-3xl font-bold mb-6 font-fredoka text-center text-purple-600">Search Results for "{query}"</h1>
+      <h1 className="text-3xl font-bold mb-6 font-fredoka text-center text-purple-600">Search Results for &quot;{query}&quot;</h1>
       {renderContent()}
     </div>
+  );
+};
+
+export default function SearchResults() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchResultsContent />
+    </Suspense>
   );
 }
