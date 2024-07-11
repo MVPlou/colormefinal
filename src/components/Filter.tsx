@@ -11,7 +11,7 @@ const HorizontalFilter = () => {
 
   const FilterContent = () => (
     <div className="flex flex-col sm:flex-row flex-wrap gap-4 items-start sm:items-center">
-      <Popover>
+      {/* <Popover>
         <PopoverTrigger asChild>
           <Button variant="outline" className="w-full sm:w-[150px] justify-between">
             Category <ChevronDown className="h-4 w-4 opacity-50" />
@@ -33,7 +33,7 @@ const HorizontalFilter = () => {
             </div>
           </div>
         </PopoverContent>
-      </Popover>
+      </Popover> */}
 
       <Popover>
         <PopoverTrigger asChild>

@@ -93,6 +93,7 @@ const TrendingCarousel: React.FC = () => {
                   alt={page.title}
                   layout="fill"
                   objectFit="cover"
+                  sizes='(max-width: 768px) 100vw, 1280px'
                 />
               </div>
               <div className="p-2 h-16 flex items-center">

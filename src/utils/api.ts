@@ -5,6 +5,7 @@ export interface Category {
   id: string;
   name: string;
   slug: string;
+  image_url: string;
 }
 
 export interface ColoringPage {
@@ -35,7 +36,7 @@ export interface DetailedColoringPage {
 export async function getTopLevelCategories(): Promise<Category[]> {
   const { data, error } = await supabase
     .from('categories')
-    .select('id, name, slug')
+    .select('id, name, image_url , slug')
     .is('parent_id', null)
     .order('name');
 
@@ -79,7 +80,7 @@ export async function getCategoryBySlug(slug: string): Promise<Category | null> 
 export async function getSubcategories(parentId: string): Promise<Category[]> {
   const { data, error } = await supabase
     .from('categories')
-    .select('id, name, slug')
+    .select('id, name, image_url , slug')
     .eq('parent_id', parentId)
     .order('name');
 
@@ -94,7 +95,7 @@ export async function getSubcategories(parentId: string): Promise<Category[]> {
 export async function getColoringPagesByCategory(categoryId: string): Promise<ColoringPage[]> {
   const { data, error } = await supabase
     .from('coloring_pages')
-    .select('id, title, slug, thumbnail_url, category_id, likes_count, prints_count')
+    .select('id, title, slug, image_url, thumbnail_url, category_id, likes_count, prints_count')
     .eq('category_id', categoryId)
     .order('created_at', { ascending: false });
 

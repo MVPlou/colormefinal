@@ -25,6 +25,7 @@ export default async function HomePage() {
             <Link key={category.id} href={`/category/${category.slug}`}>
               <Card className="hover:shadow-lg transition-shadow duration-300 h-full">
                     <CardContent className="p-4 text-center h-[192px] flex items-center justify-center">
+                      
                     <h3 className="font-semibold">{category.name}</h3>
                     </CardContent>
                     

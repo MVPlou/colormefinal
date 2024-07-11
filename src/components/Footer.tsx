@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Coloring Pages</h3>
+          <p className='font-fredoka font-bold  text-3xl'>COLORME.</p><p className='text-3xl font-fredoka font-bold  text-purple-600'>GG</p>
             <p className="text-sm">Discover and download beautiful coloring pages for all ages.</p>
           </div>
 
