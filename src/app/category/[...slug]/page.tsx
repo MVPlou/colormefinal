@@ -86,8 +86,8 @@ export default async function CategoryPage({
         </div>
       </div>
 
-      {/* Ad space below the navbar
-      <AdSpace /> */}
+      {/* Ad space below the navbar */}
+      {/* <AdSpace /> */}
 
       {subcategories.length > 0 && (
         <nav aria-label="Subcategories" className="mb-8">
@@ -97,17 +97,17 @@ export default async function CategoryPage({
               <React.Fragment key={subcat.slug}>
                 <li className="w-full">
                   <Link href={`/category/${subcat.slug}`} className="block transition-transform duration-300 hover:scale-105">
-                    <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg h-64">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg">
                       <div className="relative h-48">
                         <Image
-                          src={category.image_url}
+                          src={subcat.image_url}
                           alt={subcat.name}
                           layout="fill"
                           objectFit="cover"
-                          sizes="(max-width: 768px) 100vw, 1280px"
+                          className="rounded-md"
                         />
                       </div>
-                      <div className="p-2 h-16 flex items-center">
+                      <div className="p-2 h-6 flex items-center">
                         <h3 className="text-sm font-semibold line-clamp-2">{subcat.name}</h3>
                       </div>
                     </div>
@@ -126,17 +126,17 @@ export default async function CategoryPage({
             <React.Fragment key={page.id}>
               <li className="w-full">
                 <Link href={`/coloringpages/${page.slug}`} className="block transition-transform duration-300 hover:scale-105">
-                  <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg h-64">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg">
                     <div className="relative h-48">
                       <Image
-                        src={page.thumbnail_url}
+                        src={page.image_url}
                         alt={page.title}
                         layout="fill"
                         objectFit="cover"
-                        sizes="(max-width: 768px) 100vw, 1280px"
+                        className="rounded-md"
                       />
                     </div>
-                    <div className="p-2 h-16 flex items-center">
+                    <div className="p-2 h-6 flex items-center">
                       <h3 className="text-sm font-semibold line-clamp-2">{page.title}</h3>
                     </div>
                   </div>

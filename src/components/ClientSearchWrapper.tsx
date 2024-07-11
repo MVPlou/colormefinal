@@ -1,13 +1,14 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, X } from 'lucide-react';
+import { Search, X, ChevronUp, ChevronDown, RefreshCw, ExternalLink } from 'lucide-react';
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import Link from 'next/link';
 import Image from 'next/image';
 import { supabase } from '@/utils/supabase';
 import debounce from 'lodash/debounce';
+import { Card, CardContent } from "@/components/ui/card";
 
 // Category hashtags
 const categories = ['Animals', 'Nature', 'Fantasy', 'Characters', 'Vehicles', 'Space', 'Underwater', 'Holidays'];
@@ -49,7 +50,6 @@ const ClientSearchWrapper: React.FC = () => {
         setHasSearched(true);
       } catch (error) {
         console.error('Error searching coloring pages:', error);
-        // You might want to set an error state here and display it to the user
       } finally {
         setIsLoading(false);
       }
@@ -168,6 +168,61 @@ const ClientSearchWrapper: React.FC = () => {
     </div>
   );
 
+  const renderSearchResults = () => (
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4">
+      {filteredPages.map((page) => (
+        <Link 
+          key={page.id} 
+          href={`/coloringpages/${page.slug}`}
+          onClick={() => setIsDropdownOpen(false)}
+          className="block transition-transform duration-300 hover:scale-105"
+        >
+         <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 w-auto ">
+            <CardContent className="p-2">
+              <div className="relative aspect-square">
+                <Image 
+                  src={page.image_url} 
+                  alt={`${page.title} coloring page thumbnail`}
+                  width={300}
+                  height={162}
+                  className="rounded-md"
+                />
+              </div>
+              <h3 className="text-sm font-semibold truncate mt-2 font-fredoka">{page.title}</h3>
+            </CardContent>
+          </Card>
+        </Link>
+      ))}
+    </div>
+  );
+
+  // const renderNavigationButtons = () => (
+  //   <div className="flex items-center justify-between mt-4 px-4 py-2 bg-gray-100 rounded-b-lg">
+  //     <div className="flex space-x-4">
+  //       <Button variant="ghost" size="sm">
+  //         <ChevronUp className="mr-2" size={16} />
+  //         <span>Navigate</span>
+  //       </Button>
+  //       <Button variant="ghost" size="sm">
+  //         <ChevronDown className="mr-2" size={16} />
+  //         <span>Navigate</span>
+  //       </Button>
+  //       <Button variant="ghost" size="sm">
+  //         <RefreshCw className="mr-2" size={16} />
+  //         <span>Open in a new tab</span>
+  //       </Button>
+  //     </div>
+  //     <div className="flex items-center">
+  //       <span className="text-sm text-gray-500 mr-2">esc</span>
+  //       <Button variant="ghost" size="sm">Close</Button>
+  //     </div>
+  //     <Button variant="link" size="sm" className="text-blue-500">
+  //       <span>Open search page</span>
+  //       <ExternalLink className="ml-2" size={16} />
+  //     </Button>
+  //   </div>
+  // );
+
   return (
     <div className="w-full bg-gray-100">
       <div 
@@ -212,27 +267,7 @@ const ClientSearchWrapper: React.FC = () => {
                   {isLoading ? (
                     <p className="text-sm text-gray-500 dark:text-gray-400">Loading...</p>
                   ) : filteredPages.length > 0 ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                      {filteredPages.map((page) => (
-                        <Link 
-                          key={page.id} 
-                          href={`/coloringpages/${page.slug}`}
-                          onClick={() => setIsDropdownOpen(false)}
-                          className="block hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition duration-150 ease-in-out"
-                        >
-                          <div className="aspect-square relative mb-2">
-                            <Image 
-                              src={page.image_url} 
-                              alt={page.title}
-                              layout="fill"
-                              objectFit="cover"
-                              className="rounded-lg"
-                            />
-                          </div>
-                          <p className="text-sm text-gray-700 dark:text-gray-200 truncate">{page.title}</p>
-                        </Link>
-                      ))}
-                    </div>
+                    renderSearchResults()
                   ) : (
                     hasSearched && <p className="text-sm text-gray-500 dark:text-gray-400">No results found for {query}</p>
                   )}
@@ -245,13 +280,15 @@ const ClientSearchWrapper: React.FC = () => {
                     </Button>
                   </div>
                 </div>
+                
+                {/* {renderNavigationButtons()} */}
               </div>
             )}
           </div>
         </div>
-        {/* <div className="max-w-6xl mx-auto px-4 mt-2">
+        <div className="max-w-6xl mx-auto px-4 mt-2">
           {renderHashtagButtons()}
-        </div> */}
+        </div>
       </div>
       
       {isSticky && <div style={{ height: '60px' }}></div>}

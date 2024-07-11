@@ -9,6 +9,7 @@ export interface Category {
 }
 
 export interface ColoringPage {
+  image_url: string;
   id: string;
   title: string;
   slug: string;
@@ -51,7 +52,7 @@ export async function getTopLevelCategories(): Promise<Category[]> {
 export async function getAllColoringPages(): Promise<ColoringPage[]> {
   const { data, error } = await supabase
     .from('coloring_pages')
-    .select('id, title, slug, thumbnail_url, category_id, likes_count, prints_count')
+    .select('id, title, slug, thumbnail_url, category_id, likes_count, prints_count, image_url')
     .order('created_at', { ascending: false });
 
   if (error) {
@@ -128,7 +129,7 @@ export async function getColoringPageBySlug(slug: string): Promise<DetailedColor
 export async function getSimilarPages(categoryId: string, currentPageSlug: string, limit: number = 5): Promise<ColoringPage[]> {
   const { data, error } = await supabase
     .from('coloring_pages')
-    .select('id, title, slug, thumbnail_url, category_id, likes_count, prints_count')
+    .select('id, title, slug, thumbnail_url, category_id, likes_count, prints_count, image_url')
     .eq('category_id', categoryId)
     .neq('slug', currentPageSlug)
     .order('created_at', { ascending: false })
